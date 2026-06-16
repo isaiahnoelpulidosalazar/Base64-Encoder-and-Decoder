@@ -1,7 +1,7 @@
-// current version - 1.0.1
+// current version - 1.0.2
 
 // changes:
-// - update workflow
+// - include runtime to application
 
 namespace Base64_Encoder_and_Decoder
 {

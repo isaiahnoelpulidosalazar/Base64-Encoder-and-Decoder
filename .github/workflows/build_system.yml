@@ -67,16 +67,16 @@ jobs:
           echo "EOF" >> $env:GITHUB_OUTPUT
 
       - name: Restore packages
-        run: dotnet restore Base64EncoderAndDecoder.csproj
+        run: dotnet restore Base64-Encoder-and-Decoder.csproj
 
       - name: Publish EXE
-        run: dotnet publish Base64EncoderAndDecoder.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:AssemblyName=Base64EncoderAndDecoder-v${{ steps.version.outputs.VERSION }} -o publish
+        run: dotnet publish Base64-Encoder-and-Decoder.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:AssemblyName=Base64-Encoder-and-Decoder-v${{ steps.version.outputs.VERSION }} -o publish
 
       - name: Check if tag already exists
         id: check_tag
         shell: pwsh
         run: |
-          $tag = "Base64EncoderAndDecoder-v${{ steps.version.outputs.VERSION }}"
+          $tag = "Base64-Encoder-and-Decoder-v${{ steps.version.outputs.VERSION }}"
           git fetch --tags
 
           if (git tag -l $tag) {
@@ -89,7 +89,7 @@ jobs:
         if: steps.check_tag.outputs.exists == 'false'
         shell: pwsh
         run: |
-          $tag = "Base64EncoderAndDecoder-v${{ steps.version.outputs.VERSION }}"
+          $tag = "Base64-Encoder-and-Decoder-v${{ steps.version.outputs.VERSION }}"
 
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
@@ -101,8 +101,8 @@ jobs:
         if: steps.check_tag.outputs.exists == 'false'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: Base64EncoderAndDecoder-v${{ steps.version.outputs.VERSION }}
-          name: Base64EncoderAndDecoder-v${{ steps.version.outputs.VERSION }}
+          tag_name: Base64-Encoder-and-Decoder-v${{ steps.version.outputs.VERSION }}
+          name: Base64-Encoder-and-Decoder-v${{ steps.version.outputs.VERSION }}
           body: |
             Auto-generated release.
 
@@ -111,6 +111,6 @@ jobs:
 
             Changes:
             ${{ steps.changes.outputs.CHANGES }}
-          files: publish/Base64EncoderAndDecoder-v${{ steps.version.outputs.VERSION }}.exe
+          files: publish/Base64-Encoder-and-Decoder-v${{ steps.version.outputs.VERSION }}.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

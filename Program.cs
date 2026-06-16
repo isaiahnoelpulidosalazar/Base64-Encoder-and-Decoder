@@ -1,3 +1,8 @@
+// current version - 1.0.0
+
+// changes:
+// - initial build
+
 namespace Base64_Encoder_and_Decoder
 {
     internal static class Program

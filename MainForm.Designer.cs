@@ -119,6 +119,7 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Base64";
+            Load += MainForm_Load;
             ResumeLayout(false);
             PerformLayout();
 
